@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPY BIRTHDAY MANNIE</title>
+    <style>
+        body {
+            background: #ffffff;
+            color: #c678ff;
+            font-family: "Freestyle Script", sans-serif;
+            text-align: center;
+            padding: 20px;
+			animation : bounce 2s infinite;	
+        }
+		@keyframes bounce {
+		    0%, 100% {
+			transform: translateY(0);
+			}
+			50% {
+			transform: translateY(-20px);/*تحرك لأعلى*/
+			}
+		}
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px #ffd1dc;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #cea2fd;
+            transform: rotate(-45deg);
+            animation: floatUp 5s linear infinite;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #cea2fd;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: 25px;
+            left: 0;
+        }
+        .heart::after {
+            left: 25px;
+            top: 0;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(200deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(-45deg);
+                opacity: 3;
+			}
+		}	
+        img {
+            width: 200px;
+            height: 200px;
+            margin: 20px 0;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #yes-btn {
+            background-color: #e6e6fa;
+            color: #958ee4;
+        }
+        #no-btn {
+            background-color: #daedf5;
+            color: #57aed1;
+            position: absolute;
+        }
+        #message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #4b0082;
+        }
+    </style>
+</head>
+<body>
+    <h1>HAPPY BIRTHDAY MY SOUL MATE ♡</h1>
+    <p> كل عام و أنتِ بخير, كل عام و أنتِ رفيقة عمري, أطال الله في عمرك و أدامك الله في أيامي ♡ <br><br> انتهت صلاحية حبك بما أنك صكرتي الـ18, اضغط على أحبك لتجديد الاشتراك </p>
+    <img id="bear" src="main.gif" alt="صورة">
+    <div class="buttons">
+        <button id="yes-btn">أحبك</button>
+        <button id="no-btn">لا</button>
+    </div>
+    <div id="message"></div>
+
+    <script>
+	
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
+		
+        const yesBtn = document.getElementById("yes-btn");
+        const noBtn = document.getElementById("no-btn");
+        const bear = document.getElementById("bear");
+        const message = document.getElementById("message");
+
+        yesBtn.addEventListener("click", () => {
+            // تغيير الصورة عند الضغط على زر نعم
+            bear.src = "yes-img.gif"; // صورة جديدة
+            message.textContent = "قلبي أنتِ";
+        });
+
+        noBtn.addEventListener("click", () => {
+            // تغيير الصورة عند الضغط على زر لا
+            bear.src = "no-img.gif";
+            message.textContent = "شقصدك ؟!!!!!!";
+            noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+            noBtn.style.left = Math.random() * (window.innerWidth - 50) + "px";
+        });
+    </script>
+</body>
+</html>
